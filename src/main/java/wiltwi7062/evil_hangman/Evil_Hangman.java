@@ -74,7 +74,7 @@ public class Evil_Hangman extends FileHandler{
         
     }
     
-    public static WordsDictionary revampFamily (WordsDictionary treeMap,String currentOutput, char currentGuess) {
+    public static WordsDictionary revampFamily (WordsDictionary treeMap,String currentOutput, char currentGuess) { // this will update the current working dictionary
         String nextPattern, temp;
         int counter, index, maxCount;
         Family tempAL = new Family();
@@ -92,7 +92,7 @@ public class Evil_Hangman extends FileHandler{
         }
         return tempdic;
     }
-    public static boolean ismatching(String a, String b) {
+    public static boolean ismatching(String a, String b) {   // this will be a bounding method assisting our game logic
         for (int i=0; i<a.length();i++) {
             if (a.charAt(i) != b.charAt(i)){
                 return false;
@@ -103,7 +103,7 @@ public class Evil_Hangman extends FileHandler{
         return true;
     }
     
-    public static boolean isFamilyRelated(String pattern, String comparison) {
+    public static boolean isFamilyRelated(String pattern, String comparison) {   //this will be the primary bounding method
         for (int i=0;i<pattern.length();i++) {
             if (pattern.charAt(i)=='1') {
                 i++;
