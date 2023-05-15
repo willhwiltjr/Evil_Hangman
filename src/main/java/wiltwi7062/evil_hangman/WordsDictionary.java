@@ -6,6 +6,7 @@ package wiltwi7062.evil_hangman;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -45,6 +46,8 @@ public class WordsDictionary extends TreeMap {
             return null;
         }        
     }
+    
+    
     
     
     
