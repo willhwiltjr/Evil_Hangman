@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
  * @author wiltw
  * @param <String>
  */
-public class Family<String>  {
+public class Family<String>  implements Iterable<String>{
     private String[] myArray;   // array of list entries
     private int mySize;
     private static final int DEFAULT_INITIAL_CAPACITY = 25;  
@@ -180,7 +180,9 @@ public class Family<String>  {
         System.arraycopy(myArray, 0, result, 0, mySize); // end for
       return result;
    } // end toArray
+    
 
+    @Override
     public Iterator<String> iterator() {
        return new MySimpleIterator<>();
     }

@@ -104,16 +104,16 @@ public class Evil_Hangman extends FileHandler{
     }
     
     public static boolean isFamilyRelated(String pattern, String comparison) {   //this will be the primary bounding method
+        boolean related = false;
         for (int i=0;i<pattern.length();i++) {
-            if (pattern.charAt(i)=='1') {
-                i++;
+            if (pattern.charAt(i) == '1'){ 
             } else if (pattern.charAt(i) != comparison.charAt(i)) {
                 return false;
             } else {
-                
+                related=true;
             }
         }
-        return true;
+        return related;
     }
             
     
