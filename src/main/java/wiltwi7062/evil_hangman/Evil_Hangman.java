@@ -66,6 +66,10 @@ public class Evil_Hangman extends FileHandler{
         
     }
     
+    public static WordsDictionary revampFamily (WordsDictionary current,String currentOutput) {
+        String nextPattern;
+    }
+    
     public static Boolean guessChecker(int guessesleft) {
         if (guessesleft ==0) {
             return false;
@@ -78,6 +82,22 @@ public class Evil_Hangman extends FileHandler{
         current.add(newaddition);
         return current;
     }
+    
+    // need a method that handles guess logic
+    
+    public static char getGuess() {
+        Scanner scnr = new Scanner(System.in);
+        char result;
+        System.out.println("please input a character");
+        result = scnr.next().charAt(0);
+        return result;
+    }
+    public static void updatePlayer(String goal) { // this will be used when i introduce the gui.
+//        for (int i=0;i<goal.length();i++) implement this code when gui comes around
+//            Jfield(i) = goal.charAt(i);
+        System.out.println(goal);
+    }
+    
     
     
     

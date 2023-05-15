@@ -48,7 +48,7 @@ public class WordsDictionary extends TreeMap {
     
     
     
-    public boolean contains(K key) {
+    public boolean contains(String key) {
         return keys.contains(key);               
     }  
     
