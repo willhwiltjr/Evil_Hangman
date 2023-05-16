@@ -48,9 +48,9 @@ public class methodsTester extends Evil_Hangman {
         devious.add(air);
         devious.add(bob);
         devious.add(are);
-        Iterator<Family> familyiterator = devious.iterator();
+        Iterator<String> familyiterator = devious.iterator();
         while (familyiterator.hasNext()) {
-           System.out.println(familyiterator.next());
+           System.out.println((String)familyiterator.next());
         }
         System.out.println("should be far air bob are");
         Family update = updateList(devious, "bat");

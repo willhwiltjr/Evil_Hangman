@@ -12,6 +12,8 @@ import java.util.TreeMap;
 /**
  *
  * @author wiltw
+ * @param <String>
+ * @param <Family>
  * @param <<error>>
  */
 public class WordsDictionary extends TreeMap {
@@ -23,18 +25,17 @@ public class WordsDictionary extends TreeMap {
         values = new Family();
     }
     
-    public ArrayList add(String key, String value) {
+    public WordsDictionary add(String key, Family value) {
         if (keys.contains(key)) {
             int location = keys.indexOf(key);
-            ArrayList<String> temp = (ArrayList)values.getEntry(location);
-            temp.add(value);
-            return temp;
+            Family temp = new Family();
+            temp.add(values.getEntry(location));
+            this.replace(key, temp);
         } else {
-            ArrayList<String> temp = new ArrayList<>();
-            temp.add(value);
-            put(key,temp);
-            return null;
+            put(key,value);
+            return this;
         }
+        return this;
     }
     
     public String Remove(String key) {      

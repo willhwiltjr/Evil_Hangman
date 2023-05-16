@@ -75,17 +75,22 @@ public class Evil_Hangman extends FileHandler{
     }
     
     public static WordsDictionary revampFamily (WordsDictionary treeMap,String currentOutput, char currentGuess) { // this will update the current working dictionary
-        String nextPattern, temp;
+        String nextPattern, temp, loopTemp, loopTempActual;
         int counter, index, maxCount;
         Family tempAL = new Family();
+        Family tempLoop = new Family();
         WordsDictionary tempdic = new WordsDictionary();
         Set<Map.Entry<String, Family>> entrySet = (treeMap.entrySet());
         index = 0;
         for(Map.Entry<String, Family> currentEntry : entrySet) {
             temp = currentEntry.getKey();
             tempAL = currentEntry.getValue();
-            for (int i=0;i<tempAL.getLength();i++) {
-                
+            Iterator<String> familyiterator = tempAL.iterator();
+            while (familyiterator.hasNext()) {
+                loopTempActual = (String)familyiterator.next();
+               loopTemp = Pattern(loopTempActual, currentGuess, temp);
+               tempLoop.add(loopTemp);
+               tempdic = tempdic.add(loopTemp, tempLoop);
             }
             
             

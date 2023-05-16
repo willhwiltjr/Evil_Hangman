@@ -37,9 +37,9 @@ public class Family<String>  implements Iterable<String>{
     {
         return mySize==0;
     } // end isEmpty
-    public int getMySize() {
-        return mySize;
-    }
+//    public int getMySize() {
+//        return mySize;
+//    }
     
     public void add(String newEntry) {
         ensureCapacity();
