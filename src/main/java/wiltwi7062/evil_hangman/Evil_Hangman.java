@@ -23,38 +23,38 @@ import static wiltwi7062.evil_hangman.EvilHangmanKeyBuilder.Pattern;
 public class Evil_Hangman extends FileHandler{
 
     public static void main(String[] args) {
-        Random rand = new Random();
-        boolean hasGuessleft;
-        String currentFamily ="";
-        int wordLength;
-        int guesses;
-        char guess;
-        WordsDictionary devious = new WordsDictionary();
-        Family current = new Family();
-        Scanner scnr = new Scanner(System.in);
-        System.out.println("how many characters would you like for a word");
-        wordLength = scnr.nextInt();
-        currentFamily = wordCreator(wordLength);
-        if (wordLength >= 26) {
-            guesses = rand.nextInt(25,1);
-            hasGuessleft = true;
-        } else {
-            guesses = wordLength -1;
-            hasGuessleft = true;
-        }
-        ArrayList<String> wordsList = new ArrayList();
-        try {
-            wordsList = findWords(wordLength);
-            if (wordsList.isEmpty()) {
-                wordsList = findWords(4);
-                guesses = 3;
-                hasGuessleft = true;
-            }
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Evil_Hangman.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Evil_Hangman.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        Random rand = new Random();
+//        boolean hasGuessleft;
+//        String currentFamily ="";
+//        int wordLength;
+//        int guesses;
+//        char guess;
+//        WordsDictionary devious = new WordsDictionary();
+//        Family current = new Family();
+//        Scanner scnr = new Scanner(System.in);
+//        System.out.println("how many characters would you like for a word");
+//        wordLength = scnr.nextInt();
+//        currentFamily = wordCreator(wordLength);
+//        if (wordLength >= 26) {
+//            guesses = rand.nextInt(25,1);
+//            hasGuessleft = true;
+//        } else {
+//            guesses = wordLength -1;
+//            hasGuessleft = true;
+//        }
+//        ArrayList<String> wordsList = new ArrayList();
+//        try {
+//            wordsList = findWords(wordLength);
+//            if (wordsList.isEmpty()) {
+//                wordsList = findWords(4);
+//                guesses = 3;
+//                hasGuessleft = true;
+//            }
+//        } catch (InterruptedException ex) {
+//            Logger.getLogger(Evil_Hangman.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(Evil_Hangman.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 //        while (hasGuessleft) {
 //          while(!devious.isEmpty()) {
 //          
@@ -78,10 +78,9 @@ public class Evil_Hangman extends FileHandler{
         String nextPattern, temp, loopTemp, loopTempActual;
         int counter, index, maxCount;
         Family tempAL = new Family();
-        Family tempLoop = new Family();
         WordsDictionary tempdic = new WordsDictionary();
+        WordsDictionary starter = new WordsDictionary();
         Set<Map.Entry<String, Family>> entrySet = (treeMap.entrySet());
-        index = 0;
         for(Map.Entry<String, Family> currentEntry : entrySet) {
             temp = currentEntry.getKey();
             tempAL = currentEntry.getValue();
@@ -89,13 +88,35 @@ public class Evil_Hangman extends FileHandler{
             while (familyiterator.hasNext()) {
                 loopTempActual = (String)familyiterator.next();
                loopTemp = Pattern(loopTempActual, currentGuess, temp);
-               tempLoop.add(loopTemp);
-               tempdic = tempdic.add(loopTemp, tempLoop);
+               if (isFamilyRelated(loopTemp, loopTempActual)){
+                tempdic = tempdic.AppendDic(tempdic, loopTempActual,loopTemp);
+               } 
+                   
+               
             }
             
             
         }
         return tempdic;
+    }
+    
+    
+    public static String isBiggestFamily(WordsDictionary treeMap,String currentPattern) {
+        WordsDictionary tempdic = treeMap;
+        String tempStr = "";
+        int countermost=0;
+        Family tempAL = new Family();
+        
+        Set<Map.Entry<String, Family>> entrySet = (tempdic.entrySet());
+        for (Map.Entry<String, Family> currentEntry : entrySet) {
+            tempAL = currentEntry.getValue();
+            if (tempAL.getSize() > countermost) {
+            countermost = tempAL.getSize();
+            tempStr = currentEntry.getKey();
+            } else {
+            }
+    }
+        return tempStr;
     }
     public static boolean ismatching(String a, String b) {   // this will be a bounding method assisting our game logic
         for (int i=0; i<a.length();i++) {

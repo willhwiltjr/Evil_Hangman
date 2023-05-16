@@ -12,10 +12,10 @@ import java.util.Scanner;
  */
 public class FileHandler extends ArrayList<String> {
     
-    public static ArrayList<String> findWords (int Length) throws InterruptedException, FileNotFoundException {
-        ArrayList<String> temp = new ArrayList<>();
+    public static Family<String> findWords (int Length) throws InterruptedException, FileNotFoundException {
+        Family<String> temp = new Family();
         int wordLength = Length;    //wordlength will be the input used to pull words of length and seperate into families
-        String fileName = "Scrabble_Dictionary.txt";
+        String fileName = "D:\\records keeping\\school stuff\\programming\\csis10b\\Evil_Hangman\\src\\main\\java\\Scrabble_Dictionary.txt";
         String currentLine;
         Scanner inputFile = null;  //scanner for grabbing nextline from txt file
         File Dictionary = null;
@@ -44,7 +44,7 @@ public class FileHandler extends ArrayList<String> {
         try {
             String holder = check;
             int length =0;
-            for (int i = 1; i<holder.length(); i++)
+            for (int i = 1; i<holder.length()+1; i++)
                 length += 1;
            if (length == checklength) {
                return true;

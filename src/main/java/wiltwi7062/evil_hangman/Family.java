@@ -133,7 +133,7 @@ public class Family<String>  implements Iterable<String>{
         return found;
     } // end contains
 
-    public int getLength()
+    public int getSize()
     {
         return mySize;
     } // end getLength
