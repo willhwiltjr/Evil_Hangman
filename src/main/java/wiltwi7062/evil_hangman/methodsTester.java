@@ -104,177 +104,32 @@ public class methodsTester extends Evil_Hangman {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Evil_Hangman.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Iterator<String> Famiterator = current.iterator();
         devious.add(currentFamily, wordsList);
         System.out.println(wordLength);
        
-            
-       
-        guess = getGuess();
-        tempdic = revampFamily(devious,currentFamily,guess);
-        System.out.println(tempdic.size());
-        currentFamily = isBiggestFamily(tempdic,currentFamily);
-        System.out.println(currentFamily);
-        devious.clear();
-        guess = getGuess();
-        devious = revampFamily(tempdic,currentFamily,guess);
-        System.out.println(devious.size());
-        currentFamily = isBiggestFamily(devious,currentFamily);
-        System.out.println(currentFamily);
-        tempdic.clear();
-//        guess = 'c';
-//        tempdic = revampFamily(devious,currentFamily,guess);
-//        System.out.println(tempdic.size());
-//        currentFamily = isBiggestFamily(tempdic,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try b");
-//        devious.clear();
-//        guess = 'd';
-//        devious = revampFamily(tempdic,currentFamily,guess);
-//        System.out.println(devious.size());
-//        currentFamily = isBiggestFamily(devious,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try t");
-//        tempdic.clear();
-//        guess = 'e';
-//        tempdic = revampFamily(devious,currentFamily,guess);
-//        System.out.println(tempdic.size());
-//        currentFamily = isBiggestFamily(tempdic,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try b");
-//        devious.clear();
-//        guess = 'f';
-//        devious = revampFamily(tempdic,currentFamily,guess);
-//        System.out.println(devious.size());
-//        currentFamily = isBiggestFamily(devious,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try t");
-//        tempdic.clear();
-//        guess = 'g';
-//        tempdic = revampFamily(devious,currentFamily,guess);
-//        System.out.println(tempdic.size());
-//        currentFamily = isBiggestFamily(tempdic,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try b");
-//        devious.clear();
-//        guess = 'h';
-//        devious = revampFamily(tempdic,currentFamily,guess);
-//        System.out.println(devious.size());
-//        currentFamily = isBiggestFamily(devious,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try t");
-//        tempdic.clear();
-//        guess = 'i';
-//        tempdic = revampFamily(devious,currentFamily,guess);
-//        System.out.println(tempdic.size());
-//        currentFamily = isBiggestFamily(tempdic,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try b");
-//        devious.clear();
-//        guess = 'b';
-//        devious = revampFamily(tempdic,currentFamily,guess);
-//        System.out.println(devious.size());
-//        currentFamily = isBiggestFamily(devious,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try t");
-//        tempdic.clear();
-//        guess = 't';
-//        tempdic = revampFamily(devious,currentFamily,guess);
-//        System.out.println(tempdic.size());
-//        currentFamily = isBiggestFamily(tempdic,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try b");
-//        devious.clear();
-//        guess = 'b';
-//        devious = revampFamily(tempdic,currentFamily,guess);
-//        System.out.println(devious.size());
-//        currentFamily = isBiggestFamily(devious,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try t");
-//        tempdic.clear();
-//        guess = 't';
-//        tempdic = revampFamily(devious,currentFamily,guess);
-//        System.out.println(tempdic.size());
-//        currentFamily = isBiggestFamily(tempdic,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try b");
-//        devious.clear();
-//        guess = 'b';
-//        devious = revampFamily(tempdic,currentFamily,guess);
-//        System.out.println(devious.size());
-//        currentFamily = isBiggestFamily(devious,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try t");
-//        tempdic.clear();
-//        guess = 't';
-//        tempdic = revampFamily(devious,currentFamily,guess);
-//        System.out.println(tempdic.size());
-//        currentFamily = isBiggestFamily(tempdic,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try b");
-//        devious.clear();
-//        guess = 'b';
-//        devious = revampFamily(tempdic,currentFamily,guess);
-//        System.out.println(devious.size());
-//        currentFamily = isBiggestFamily(devious,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try t");
-//        tempdic.clear();
-//        guess = 't';
-//        tempdic = revampFamily(devious,currentFamily,guess);
-//        System.out.println(tempdic.size());
-//        currentFamily = isBiggestFamily(tempdic,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try b");
-//        devious.clear();
-//        guess = 'b';
-//        devious = revampFamily(tempdic,currentFamily,guess);
-//        System.out.println(devious.size());
-//        currentFamily = isBiggestFamily(devious,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try t");
-//        tempdic.clear();
-//        guess = 't';
-//        tempdic = revampFamily(devious,currentFamily,guess);
-//        System.out.println(tempdic.size());
-//        currentFamily = isBiggestFamily(tempdic,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try b");
-//        devious.clear();
-//        guess = 'b';
-//        devious = revampFamily(tempdic,currentFamily,guess);
-//        System.out.println(devious.size());
-//        currentFamily = isBiggestFamily(devious,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try t");
-//        tempdic.clear();
-//        guess = 't';
-//        tempdic = revampFamily(devious,currentFamily,guess);
-//        System.out.println(tempdic.size());
-//        currentFamily = isBiggestFamily(tempdic,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try b");
-//        devious.clear();
-//        guess = 'b';
-//        devious = revampFamily(tempdic,currentFamily,guess);
-//        System.out.println(devious.size());
-//        currentFamily = isBiggestFamily(devious,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try t");
-//        tempdic.clear();
-//        guess = 't';
-//        tempdic = revampFamily(devious,currentFamily,guess);
-//        System.out.println(tempdic.size());
-//        currentFamily = isBiggestFamily(tempdic,currentFamily);
-//        System.out.println(currentFamily);
-//        System.out.println("lets try b");
-//        devious.clear();
-        
-        
-       
-        
-        
-        
+        if (!guessChecker(guesses)) {
+            System.out.println("you lose");
+        }else if (containsdig(currentFamily)) {
+            System.out.println("yay you win");
+        }else {
+               guess = getGuess();
+               tempdic = revampFamily(devious,currentFamily,guess);
+               System.out.println(tempdic.size());
+               currentFamily = isBiggestFamily(tempdic,currentFamily);
+               System.out.println(currentFamily);
+               devious.clear();
+               devious.add()
+               guesses--;
+               guess = getGuess();
+               devious = revampFamily(tempdic,currentFamily,guess);
+               System.out.println(devious.size());
+               currentFamily = isBiggestFamily(devious,currentFamily);
+               System.out.println(currentFamily);
+               tempdic.clear();
+               guesses--;
+            }
+        }
+
     }
     
 }

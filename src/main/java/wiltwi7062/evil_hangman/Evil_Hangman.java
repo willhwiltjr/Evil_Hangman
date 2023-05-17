@@ -179,6 +179,17 @@ public class Evil_Hangman extends FileHandler{
         System.out.println(goal);
     }
     
+    public static boolean containsdig(String currentguess) {
+        boolean result = false;
+        for (int i=0; i<currentguess.length();i++)
+            if (currentguess.charAt(i) == '1') {
+                return true;
+            } else {
+                
+            }
+        return result;
+    }
+    
     
     
     
