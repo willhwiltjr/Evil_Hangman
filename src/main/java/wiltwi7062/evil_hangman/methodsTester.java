@@ -106,10 +106,10 @@ public class methodsTester extends Evil_Hangman {
         }
         devious.add(currentFamily, wordsList);
         System.out.println(wordLength);
-       
+        while (guesses > 0) {
         if (!guessChecker(guesses)) {
             System.out.println("you lose");
-        }else if (containsdig(currentFamily)) {
+        }else if (!containsdig(currentFamily)) {
             System.out.println("yay you win");
         }else {
                guess = getGuess();
@@ -118,18 +118,14 @@ public class methodsTester extends Evil_Hangman {
                currentFamily = isBiggestFamily(tempdic,currentFamily);
                System.out.println(currentFamily);
                devious.clear();
-               devious.add()
-               guesses--;
-               guess = getGuess();
-               devious = revampFamily(tempdic,currentFamily,guess);
-               System.out.println(devious.size());
-               currentFamily = isBiggestFamily(devious,currentFamily);
-               System.out.println(currentFamily);
+               devious = tempdic.TailorDic(tempdic, currentFamily);
                tempdic.clear();
                guesses--;
+               
             }
+        }
         }
 
     }
     
-}
+

@@ -81,6 +81,17 @@ public class WordsDictionary extends TreeMap {
         return temp;
     }
     
+    public WordsDictionary TailorDic(WordsDictionary current,String starter) {
+        WordsDictionary tempdic = new WordsDictionary();
+        Set<Map.Entry<String, Family>> entrySet = (current.entrySet());
+        for (Map.Entry<String, Family> currentEntry : entrySet) {
+            if (currentEntry.getKey().equals(starter)) {
+                tempdic.put(currentEntry.getKey(), currentEntry.getValue());
+            }
+        }
+        return tempdic;
+    }
+    
     
     
     
