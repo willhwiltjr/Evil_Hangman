@@ -71,59 +71,61 @@ public class methodsTester extends Evil_Hangman {
 //        }
 //        System.out.println("should be bat rat");
 //        updatePlayer(test);
-        Random rand = new Random();
-        Scanner scnr = new Scanner(System.in);   
-        boolean hasGuessleft;
-        String currentFamily ="", tempStr = "";
-        int wordLength, guesses, count = 0;
-        char guess;
-        WordsDictionary devious = new WordsDictionary();
-        WordsDictionary tempdic = new WordsDictionary();
-        Family current = new Family();
-        Family tempF = new Family();
-        System.out.println("How many letters do you want?");
-        wordLength = scnr.nextInt();
-        currentFamily = wordCreator(wordLength);
-        if (wordLength >= 26) {
-            guesses = rand.nextInt(25,1);
-            hasGuessleft = true;
-        } else {
-            guesses = wordLength -1;
-            hasGuessleft = true;
-        }
-        Family<String> wordsList = new Family();
-        try {
-            wordsList = findWords(wordLength);
-            if (wordsList.isEmpty()) {
-                wordsList = findWords(4);
-                guesses = 3;
-                hasGuessleft = true;
-            }
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Evil_Hangman.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Evil_Hangman.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        devious.add(currentFamily, wordsList);
-        System.out.println(wordLength);
-        while (guesses > 0) {
-        if (!guessChecker(guesses)) {
-            System.out.println("you lose");
-        }else if (!containsdig(currentFamily)) {
-            System.out.println("yay you win");
-        }else {
-               guess = getGuess();
-               tempdic = revampFamily(devious,currentFamily,guess);
-               System.out.println(tempdic.size());
-               currentFamily = isBiggestFamily(tempdic,currentFamily);
-               System.out.println(currentFamily);
-               devious.clear();
-               devious = tempdic.TailorDic(tempdic, currentFamily);
-               tempdic.clear();
-               guesses--;
-               
-            }
-        }
+//        Random rand = new Random();
+//        Scanner scnr = new Scanner(System.in);   
+//        boolean hasGuessleft, hasWon = false;
+//        String currentFamily ="", tempStr = "";
+//        int wordLength, guesses, count = 0;
+//        char guess;
+//        WordsDictionary devious = new WordsDictionary();
+//        WordsDictionary tempdic = new WordsDictionary();
+//        Family current = new Family();
+//        Family tempF = new Family();
+//        System.out.println("How many letters do you want?");
+//        wordLength = scnr.nextInt();
+//        currentFamily = wordCreator(wordLength);
+//        if (wordLength >= 26) {
+//            guesses = rand.nextInt(25,1);
+//            hasGuessleft = true;
+//        } else {
+//            guesses = wordLength -1;
+//            hasGuessleft = true;
+//        }
+//        Family<String> wordsList = new Family();
+//        try {
+//            wordsList = findWords(wordLength);
+//            if (wordsList.isEmpty()) {
+//                wordsList = findWords(4);
+//                guesses = 3;
+//                hasGuessleft = true;
+//            }
+//        } catch (InterruptedException ex) {
+//            Logger.getLogger(Evil_Hangman.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(Evil_Hangman.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        devious.add(currentFamily, wordsList);
+//        System.out.println(wordLength);
+//        while (!hasWon || hasGuessleft) {
+//        if (!guessChecker(guesses)) {
+//            System.out.println("you lose");
+//            hasGuessleft = false;
+//        }else if (!containsdig(currentFamily)) {
+//            System.out.println("yay you win");
+//            hasWon = true;
+//        }else {
+//               guess = getGuess();
+//               tempdic = revampFamily(devious,currentFamily,guess);
+//               System.out.println(tempdic.size());
+//               currentFamily = isBiggestFamily(tempdic,currentFamily);
+//               System.out.println(currentFamily);
+//               devious.clear();
+//               devious = tempdic.TailorDic(tempdic, currentFamily);
+//               tempdic.clear();
+//               guesses--;
+//               
+//            }
+//        }
         }
 
     }

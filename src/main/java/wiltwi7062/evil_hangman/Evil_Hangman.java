@@ -2,16 +2,11 @@
 package wiltwi7062.evil_hangman;
 
 import java.io.FileNotFoundException;
-import java.lang.String;
-import  wiltwi7062.evil_hangman.Family;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.TreeMap;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static wiltwi7062.evil_hangman.EvilHangmanKeyBuilder.Pattern;
@@ -23,63 +18,21 @@ import static wiltwi7062.evil_hangman.EvilHangmanKeyBuilder.Pattern;
 public class Evil_Hangman extends FileHandler{
 
     public static void main(String[] args) {
-//        Random rand = new Random();
-//        boolean hasGuessleft;
-//        String currentFamily ="";
-//        int wordLength;
-//        int guesses;
-//        char guess;
-//        WordsDictionary devious = new WordsDictionary();
-//        Family current = new Family();
-//        Scanner scnr = new Scanner(System.in);
-//        System.out.println("how many characters would you like for a word");
-//        wordLength = scnr.nextInt();
-//        currentFamily = wordCreator(wordLength);
-//        if (wordLength >= 26) {
-//            guesses = rand.nextInt(25,1);
-//            hasGuessleft = true;
-//        } else {
-//            guesses = wordLength -1;
-//            hasGuessleft = true;
-//        }
-//        ArrayList<String> wordsList = new ArrayList();
-//        try {
-//            wordsList = findWords(wordLength);
-//            if (wordsList.isEmpty()) {
-//                wordsList = findWords(4);
-//                guesses = 3;
-//                hasGuessleft = true;
-//            }
-//        } catch (InterruptedException ex) {
-//            Logger.getLogger(Evil_Hangman.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(Evil_Hangman.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        while (hasGuessleft) {
-//          while(!devious.isEmpty()) {
-//          
-//        
-//               
-//           }         
-//        }            
-//                   proposed game logic while guesschecker meaning while guesses are >0
-//  take user char run the pattern on current Families stored in the current words dictionary
-//                    update the words dictionary to reflect the new choices pick the Family with the greates members and display that hint to the player
-// the game ends when the dictionary runs out of usable families(families greater than 0) or numguesses hits 0
-//                }
-//            
-//            }
-//        }
-        
-        
+        Random rand = new Random();
+        Scanner scnr = new Scanner(System.in);   
+        boolean hasGuessleft = false, hasWon = false;
+        String currentFamily ="";
+        int wordLength = 0, guesses = 0;
+        char guess = 'a';
+        WordsDictionary devious = new WordsDictionary();
+        WordsDictionary tempdic = new WordsDictionary();
+        gameLogic(guesses, hasWon, hasGuessleft, currentFamily, tempdic, devious, guess, wordLength, scnr, rand);
     }
     
     public static WordsDictionary revampFamily (WordsDictionary treeMap,String currentOutput, char currentGuess) { // this will update the current working dictionary
-        String nextPattern, temp, loopTemp, loopTempActual;
-        int counter, index, maxCount;
+        String  temp, loopTemp, loopTempActual;
         Family tempAL = new Family();
         WordsDictionary tempdic = new WordsDictionary();
-        WordsDictionary starter = new WordsDictionary();
         Set<Map.Entry<String, Family>> entrySet = (treeMap.entrySet());
         for(Map.Entry<String, Family> currentEntry : entrySet) {
             temp = currentEntry.getKey();
@@ -144,11 +97,7 @@ public class Evil_Hangman extends FileHandler{
             
     
     public static Boolean guessChecker(int guessesleft) {
-        if (guessesleft ==0) {
-            return false;
-        } else {
-            return true;
-        }
+        return guessesleft != 0;
     }
     
     public static String wordCreator(int wordlength) {
@@ -164,8 +113,14 @@ public class Evil_Hangman extends FileHandler{
         return current;
     }
     
-    // need a method that handles guess logic
-    
+    public static char continueGame() {
+        Scanner scnr = new Scanner(System.in);
+        char result;
+        System.out.println("Would you like to play again y/n");
+        result = scnr.next().charAt(0);
+        return result;
+    }
+        
     public static char getGuess() {
         Scanner scnr = new Scanner(System.in);
         char result;
@@ -189,6 +144,65 @@ public class Evil_Hangman extends FileHandler{
             }
         return result;
     }
+    public static void gameLogic(int guesses,boolean hasWon, boolean hasGuessleft, String currentFamily, WordsDictionary tempdic, WordsDictionary devious,char guess, int wordLength,Scanner scnr,Random rand) {
+        char cont ='y';
+        System.out.println("How many letters do you want?");
+            wordLength = scnr.nextInt();
+            currentFamily = wordCreator(wordLength);
+            if (wordLength >= 26) {
+                guesses = rand.nextInt(25,1);
+                hasGuessleft = true;
+            } else {
+                guesses = wordLength -1;
+                hasGuessleft = true;
+            }
+            Family<String> wordsList = new Family();
+            try {
+                wordsList = findWords(wordLength);
+                if (wordsList.isEmpty()) {
+                    wordsList = findWords(4);
+                    guesses = 3;
+                    hasGuessleft = true;
+                }
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Evil_Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Evil_Hangman.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            devious.add(currentFamily, wordsList);
+       do {
+        if (!guessChecker(guesses)) {
+            System.out.println("you lose");
+            break;
+        }else if (!containsdig(currentFamily)) {
+            System.out.println("yay you win");
+            break;
+        }else {
+               guess = getGuess();
+               tempdic = revampFamily(devious,currentFamily,guess);
+               currentFamily = isBiggestFamily(tempdic,currentFamily);
+               System.out.println(currentFamily);
+               devious.clear();
+               devious = tempdic.TailorDic(tempdic, currentFamily);
+               tempdic.clear();
+               guesses--;
+               
+            }
+        } while (!hasWon || hasGuessleft);
+       cont = continueGame();
+        if (cont=='y') {
+            devious.clear();
+            tempdic.clear();
+            hasWon = false;
+            wordLength = 0; 
+            guesses = 0;
+            currentFamily ="";
+            gameLogic(guesses, hasWon, hasGuessleft, currentFamily, tempdic, devious, guess, wordLength, scnr, rand);
+        } else {
+            System.exit(0);
+        }
+    }
+    
     
     
     
