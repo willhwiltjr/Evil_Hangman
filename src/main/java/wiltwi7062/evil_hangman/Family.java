@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
  * @author wiltw
  * @param <String>
  */
-public class Family<String>  implements Iterable<String>{
+public class Family<String>  implements Iterable<String>{ // think arrayList of type string code re-used from lab 5
     private String[] myArray;   // array of list entries
     private int mySize;
     private static final int DEFAULT_INITIAL_CAPACITY = 25;  

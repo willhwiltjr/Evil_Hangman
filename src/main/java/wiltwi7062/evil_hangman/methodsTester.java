@@ -4,19 +4,19 @@
  */
 package wiltwi7062.evil_hangman;
 
-import java.io.FileNotFoundException;
-import java.util.TreeMap;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import static wiltwi7062.evil_hangman.EvilHangmanKeyBuilder.Pattern;
-import static wiltwi7062.evil_hangman.Evil_Hangman.wordCreator;
-import static wiltwi7062.evil_hangman.FileHandler.findWords;
+//import java.io.FileNotFoundException;        uncomment these when you need to test methods again
+//import java.util.TreeMap;
+//import java.util.ArrayList;
+//import java.util.Iterator;
+//import java.util.Map;
+//import java.util.Random;
+//import java.util.Scanner;
+//import java.util.Set;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+//import static wiltwi7062.evil_hangman.EvilHangmanKeyBuilder.Pattern;
+//import static wiltwi7062.evil_hangman.Evil_Hangman.wordCreator;
+//import static wiltwi7062.evil_hangman.FileHandler.findWords;
 
 /**
  *

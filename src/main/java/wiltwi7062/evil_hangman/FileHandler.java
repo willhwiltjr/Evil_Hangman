@@ -15,7 +15,7 @@ public class FileHandler extends ArrayList<String> {
     public static Family<String> findWords (int Length) throws InterruptedException, FileNotFoundException {
         Family<String> temp = new Family();
         int wordLength = Length;    //wordlength will be the input used to pull words of length and seperate into families
-        String fileName = "D:\\records keeping\\school stuff\\programming\\csis10b\\Evil_Hangman\\src\\main\\java\\Scrabble_Dictionary.txt";
+        String fileName = "D:\\records keeping\\school stuff\\programming\\csis10b\\Evil_Hangman\\src\\main\\java\\Scrabble_Dictionary.txt"; // set this to location of Scrabble_Dictionary on your system.
         String currentLine;
         Scanner inputFile = null;  //scanner for grabbing nextline from txt file
         File Dictionary = null;
@@ -44,13 +44,9 @@ public class FileHandler extends ArrayList<String> {
         try {
             String holder = check;
             int length =0;
-            for (int i = 1; i<holder.length()+1; i++)
+            for (int i = 0; i<holder.length(); i++)
                 length += 1;
-           if (length == checklength) {
-               return true;
-           } else {
-               return false;
-           }
+            return length == checklength;
         } catch (Exception e) {
             return false;
         }

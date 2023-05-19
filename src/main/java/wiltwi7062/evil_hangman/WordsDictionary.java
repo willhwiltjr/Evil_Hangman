@@ -13,8 +13,6 @@ import java.util.TreeMap;
 /**
  *
  * @author wiltw
- * @param <String>
- * @param <Family>
  * @param <<error>>
  */
 public class WordsDictionary extends TreeMap {
@@ -53,11 +51,11 @@ public class WordsDictionary extends TreeMap {
             return null;
         }        
     }
-    public  WordsDictionary AppendDic(WordsDictionary subject, String familyaddition, String additionkey) {
+    public  WordsDictionary AppendDic(WordsDictionary subject, String familyaddition, String additionkey) { // think a basterdized map with various methods from across the collections library
         WordsDictionary temp = new WordsDictionary();
         temp = subject;
         if(subject.containsKey(additionkey)) {
-            Set<Map.Entry<String, Family>> entrySet = (subject.entrySet());
+            Set<Map.Entry<String, Family>> entrySet = (subject.entrySet());  // set maps allow us to access the values portion of the key value pairs
             for(Map.Entry<String, Family> currentEntry : entrySet) {
                 if (currentEntry.getKey().equals(additionkey)) {
                     Family tempfam = new Family();
@@ -81,7 +79,7 @@ public class WordsDictionary extends TreeMap {
         return temp;
     }
     
-    public WordsDictionary TailorDic(WordsDictionary current,String starter) {
+    public WordsDictionary TailorDic(WordsDictionary current,String starter) {  //this removes the target key value pair to trim down the list of permutations
         WordsDictionary tempdic = new WordsDictionary();
         Set<Map.Entry<String, Family>> entrySet = (current.entrySet());
         for (Map.Entry<String, Family> currentEntry : entrySet) {
