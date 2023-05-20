@@ -56,7 +56,7 @@ public class Evil_Hangman extends FileHandler{
         int countermost=0;
         Family tempAL = new Family();
         
-        Set<Map.Entry<String, Family>> entrySet = (tempdic.entrySet());
+        Set<Map.Entry<String, Family>> entrySet = (tempdic.entrySet());         // think iterator
         for (Map.Entry<String, Family> currentEntry : entrySet) {
             tempAL = currentEntry.getValue();
             if (tempAL.getSize() > countermost) {
@@ -142,8 +142,9 @@ public class Evil_Hangman extends FileHandler{
     }
     public static void gameLogic(int guesses,boolean hasWon, boolean hasGuessleft, String currentFamily, WordsDictionary tempdic, WordsDictionary devious,char guess, int wordLength,Scanner scnr,Random rand) {
         char cont ='y';  //bumper to contain any mishaps with continue method CYA variable
-        System.out.println("How many letters do you want? enter a number please");
-            wordLength = scnr.nextInt();
+        do {
+            wordLength = userInput(scnr, wordLength);
+        } while (wordLength==0);
             currentFamily = wordCreator(wordLength);
             if (wordLength >= 26) {
                 guesses = rand.nextInt(24)+1;
@@ -159,7 +160,7 @@ public class Evil_Hangman extends FileHandler{
                     wordsList = findWords(4);
                     wordLength = 4;
                     currentFamily = wordCreator(wordLength);
-                    guesses = 6;
+                    guesses = 10;
                     hasGuessleft = true;
                 }
             } catch (InterruptedException ex) {   //ide suggested logging catch
@@ -200,6 +201,17 @@ public class Evil_Hangman extends FileHandler{
         } else {                                         // if continueGame returns any character other than 'y' this block exits the program entirely
             System.exit(0);
         }
+    }
+    
+    public static int userInput(Scanner scnr, int wordLength) {
+        System.out.println("How many letters do you want? enter a number please");
+            try {
+                wordLength = Integer.parseInt(scnr.next());
+            } catch (NumberFormatException e) {
+                System.out.println("a number please");
+                userInput(scnr, wordLength);
+            }
+            return wordLength;
     }
     
     
