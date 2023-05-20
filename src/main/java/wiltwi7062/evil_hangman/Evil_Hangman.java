@@ -209,7 +209,6 @@ public class Evil_Hangman extends FileHandler{
                 wordLength = Integer.parseInt(scnr.next());
             } catch (NumberFormatException e) {
                 System.out.println("a number please");
-                userInput(scnr, wordLength);
             }
             return wordLength;
     }
